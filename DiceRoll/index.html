@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/313/game-die_1f3b2.png">
+    <title>D.ROLL</title>
+</head>
+<body>
+    <div id="main" class="flex flex-col items-center justify-center w-full h-screen bg-indigo-900">
+        <h1 class="text-6xl font-bold text-center text-white">ROLL THE DICE</h1>
+        
+            <span class="result text-3xl font-bold bg-gray-800 text-white rounded p-10 my-16">🎲</span>
+            <button onclick="roll(e => e.target.value)" class="text-3xl font-bold rounded-lg p-6 bg-sky-800 text-white hover:bg-sky-500 transition-colors">ROLL</button>
+        
+    </div>
+</body>
+
+<script>
+    function roll(){
+        const RandomNumber = Math.floor(Math.random() * 20 + 1)
+        document.querySelector('.result').classList.remove('text-red-800')
+
+        if(document.querySelector('#main').classList.contains('bg-red-800')) {
+            document.querySelector('#main').classList.remove('bg-red-800')
+            document.querySelector('#main').classList.add('bg-indigo-900')
+        }
+
+        if (RandomNumber == 20) {
+            document.querySelector('.result').innerHTML = `🔥 CRITICAL 🔥`
+            document.querySelector('.result').classList.add('text-red-800')
+            document.querySelector('#main').classList.add('bg-red-800')
+        } else {
+            document.querySelector('.result').innerHTML = RandomNumber
+        } 
+    }
+</script>
+</html>
